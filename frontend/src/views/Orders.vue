@@ -3,8 +3,8 @@
     <div class="container">
       <h2 class="page-title">我的订单</h2>
       
-      <!-- 订单列表 -->
-      <el-table :data="orders" v-loading="loading" style="width: 100%">
+      <!-- 订单列表 - 桌面端表格 -->
+      <el-table :data="orders" v-loading="loading" style="width: 100%" class="desktop-table">
         <el-table-column prop="orderNo" label="订单号" width="180" />
         <el-table-column prop="serviceName" label="服务项目" min-width="120" />
         <el-table-column prop="amount" label="订单金额" width="120">
@@ -67,6 +67,69 @@
           </template>
         </el-table-column>
       </el-table>
+      
+      <!-- 订单列表 - 移动端卡片 -->
+      <div class="mobile-orders" v-if="!loading">
+        <div v-for="order in orders" :key="order.id" class="order-card">
+          <div class="order-header">
+            <span class="order-no">{{ order.orderNo }}</span>
+            <el-tag :type="getOrderStatusType(order.status)" size="small">
+              {{ getOrderStatusText(order.status) }}
+            </el-tag>
+          </div>
+          
+          <div class="order-body">
+            <div class="order-info-item">
+              <span class="info-label">服务项目</span>
+              <span class="info-value">{{ order.serviceName || '-' }}</span>
+            </div>
+            <div class="order-info-item">
+              <span class="info-label">订单金额</span>
+              <span class="order-price">¥{{ order.amount }}</span>
+            </div>
+            <div class="order-info-item">
+              <span class="info-label">支付状态</span>
+              <el-tag :type="order.payStatus === 1 ? 'success' : 'info'" size="small">
+                {{ order.payStatus === 1 ? '已支付' : '未支付' }}
+              </el-tag>
+            </div>
+            <div class="order-info-item">
+              <span class="info-label">创建时间</span>
+              <span class="info-value">{{ formatTime(order.createTime) }}</span>
+            </div>
+          </div>
+          
+          <div class="order-footer">
+            <el-button
+              v-if="order.payStatus === 0 && (order.status === 1 || order.status === 2 || order.status === 3)"
+              type="primary"
+              @click="handlePay(order)"
+            >
+              支付
+            </el-button>
+            <el-button
+              v-if="order.status === 1 && order.payStatus === 0"
+              type="danger"
+              @click="handleCancel(order)"
+            >
+              取消
+            </el-button>
+            <el-button
+              v-if="order.status === 3 && order.payStatus === 1 && !order.hasReviewed"
+              type="success"
+              @click="handleReview(order)"
+            >
+              评价
+            </el-button>
+            <el-tag
+              v-else-if="order.status === 3 && order.payStatus === 1 && order.hasReviewed"
+              type="info"
+            >
+              已评价
+            </el-tag>
+          </div>
+        </div>
+      </div>
       
       <el-empty v-if="!loading && orders.length === 0" description="暂无订单记录" />
     </div>
@@ -300,5 +363,90 @@ const getOrderStatusType = (status) => {
   color: #f56c6c;
   font-weight: bold;
   font-size: 16px;
+}
+
+/* 响应式设计 - 移动端卡片布局 */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* 隐藏桌面端表格 */
+  :deep(.el-table) {
+    display: none;
+  }
+  
+  /* 移动端订单卡片 */
+  .order-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ebeef5;
+  }
+  
+  .order-no {
+    font-size: 14px;
+    color: #606266;
+    word-break: break-all;
+  }
+  
+  .order-body {
+    margin-bottom: 12px;
+  }
+  
+  .order-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  
+  .order-info-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .info-label {
+    color: #909399;
+  }
+  
+  .info-value {
+    color: #303133;
+    font-weight: 500;
+  }
+  
+  .order-price {
+    color: #f56c6c;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .order-footer {
+    display: flex;
+    gap: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #ebeef5;
+  }
+  
+  .order-footer .el-button {
+    flex: 1;
+    height: 40px;
+    font-size: 14px;
+  }
 }
 </style>

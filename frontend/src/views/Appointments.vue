@@ -3,8 +3,8 @@
     <div class="container">
       <h2 class="page-title">我的预约</h2>
       
-      <!-- 预约列表 -->
-      <el-table :data="appointments" v-loading="loading" style="width: 100%">
+      <!-- 预约列表 - 桌面端表格 -->
+      <el-table :data="appointments" v-loading="loading" style="width: 100%" class="desktop-table">
         <el-table-column prop="appointmentNo" label="预约编号" width="180" />
         <el-table-column prop="appointmentTime" label="预约时间" width="180">
           <template #default="{ row }">
@@ -40,6 +40,46 @@
           </template>
         </el-table-column>
       </el-table>
+      
+      <!-- 预约列表 - 移动端卡片 -->
+      <div class="mobile-appointments" v-if="!loading">
+        <div v-for="appointment in appointments" :key="appointment.id" class="appointment-card">
+          <div class="appointment-header">
+            <span class="appointment-no">{{ appointment.appointmentNo }}</span>
+            <el-tag :type="getStatusType(appointment.status)" size="small">
+              {{ getStatusText(appointment.status) }}
+            </el-tag>
+          </div>
+          
+          <div class="appointment-body">
+            <div class="appointment-info-item">
+              <span class="info-label">预约时间</span>
+              <span class="info-value">{{ formatTime(appointment.appointmentTime) }}</span>
+            </div>
+            <div class="appointment-info-item" v-if="appointment.remark">
+              <span class="info-label">备注</span>
+              <span class="info-value">{{ appointment.remark }}</span>
+            </div>
+          </div>
+          
+          <div class="appointment-footer">
+            <el-button
+              v-if="appointment.status === 1"
+              type="danger"
+              @click="handleCancel(appointment)"
+            >
+              取消预约
+            </el-button>
+            <el-button
+              v-else-if="appointment.status >= 2 && appointment.status <= 4"
+              disabled
+            >
+              {{ getActionText(appointment.status) }}
+            </el-button>
+            <span v-else style="color: #909399;">-</span>
+          </div>
+        </div>
+      </div>
       
       <el-empty v-if="!loading && appointments.length === 0" description="暂无预约记录" />
     </div>
@@ -153,5 +193,82 @@ const getActionText = (status) => {
   font-size: 28px;
   color: #333;
   margin-bottom: 30px;
+}
+
+/* 响应式设计 - 移动端卡片布局 */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* 隐藏桌面端表格 */
+  :deep(.el-table) {
+    display: none;
+  }
+  
+  /* 移动端预约卡片 */
+  .appointment-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+  
+  .appointment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ebeef5;
+  }
+  
+  .appointment-no {
+    font-size: 14px;
+    color: #606266;
+    word-break: break-all;
+  }
+  
+  .appointment-body {
+    margin-bottom: 12px;
+  }
+  
+  .appointment-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+  
+  .appointment-info-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .info-label {
+    color: #909399;
+  }
+  
+  .info-value {
+    color: #303133;
+    font-weight: 500;
+  }
+  
+  .appointment-footer {
+    padding-top: 12px;
+    border-top: 1px solid #ebeef5;
+  }
+  
+  .appointment-footer .el-button {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+  }
 }
 </style>
