@@ -49,8 +49,8 @@
               <span class="currency">¥</span>
               <span class="amount">{{ service.price }}</span>
             </div>
-            <el-button type="primary" @click="$router.push('/services')" class="service-button">
-              查看详情
+            <el-button type="primary" @click="handleQuickBooking(service)" class="service-button">
+              立即预约
             </el-button>
           </el-card>
         </el-col>
@@ -109,9 +109,14 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { ElMessage } from 'element-plus'
 import { getHotServices } from '@/api/service'
 import { ArrowRight } from '@element-plus/icons-vue'
+import { useUserStore } from '@/stores/user'
 
+const router = useRouter()
+const userStore = useUserStore()
 const loading = ref(false)
 const hotServices = ref([])
 
@@ -131,6 +136,24 @@ const loadHotServices = async () => {
   } finally {
     loading.value = false
   }
+}
+
+// 快速预约 - 跳转到服务页面并打开预约对话框
+const handleQuickBooking = (service) => {
+  if (!userStore.token) {
+    ElMessage.warning('请先登录')
+    router.push('/login')
+    return
+  }
+  
+  // 跳转到服务页面，并通过 query 参数传递服务 ID
+  router.push({
+    path: '/services',
+    query: {
+      serviceId: service.id,
+      categoryId: service.categoryId
+    }
+  })
 }
 </script>
 

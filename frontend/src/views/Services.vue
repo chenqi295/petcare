@@ -125,6 +125,15 @@ onMounted(() => {
   loadCategories()
   loadPets()
   loadTechnicians()
+  
+  // 检查是否有从首页传递过来的服务 ID
+  const { serviceId, categoryId } = router.currentRoute.value.query
+  if (serviceId) {
+    // 等待数据加载完成后自动打开预约对话框
+    setTimeout(() => {
+      autoOpenBookingDialog(serviceId, categoryId)
+    }, 500)
+  }
 })
 
 const loadCategories = async () => {
@@ -204,6 +213,29 @@ const showBookingDialog = (service) => {
     remark: ''
   }
   dialogVisible.value = true
+}
+
+// 自动打开预约对话框（从首页跳转过来时）
+const autoOpenBookingDialog = (serviceId, categoryId) => {
+  // 如果指定了分类 ID，先切换到对应分类
+  if (categoryId && activeCategory.value !== Number(categoryId)) {
+    activeCategory.value = Number(categoryId)
+    loadServices(Number(categoryId))
+  }
+  
+  // 在服务列表中查找对应的服务
+  const service = services.value.find(s => s.id === Number(serviceId))
+  if (service) {
+    showBookingDialog(service)
+  } else {
+    // 如果没找到，尝试在所有服务中查找
+    setTimeout(() => {
+      const foundService = services.value.find(s => s.id === Number(serviceId))
+      if (foundService) {
+        showBookingDialog(foundService)
+      }
+    }, 300)
+  }
 }
 
 // 禁用日期：只能选择当前时间1小时以后，且在9:30-22:00之间的时间
