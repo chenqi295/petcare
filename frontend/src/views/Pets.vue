@@ -52,7 +52,7 @@
 
     <!-- 添加/编辑对话框 -->
     <el-dialog v-model="dialogVisible" :title="isEdit ? '编辑宠物' : '添加宠物'" width="500px">
-      <el-form :model="petForm" :rules="rules" ref="petFormRef" label-width="80px">
+      <el-form :model="petForm" :rules="rules" ref="petFormRef">
         <el-form-item label="宠物名称" prop="name">
           <el-input v-model="petForm.name" placeholder="请输入宠物名称" />
         </el-form-item>
