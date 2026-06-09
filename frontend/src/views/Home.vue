@@ -49,9 +49,9 @@
               <span class="currency">¥</span>
               <span class="amount">{{ service.price }}</span>
             </div>
-            <el-button type="primary" @click="testClick(service)" class="service-button">
+            <button type="button" @click="testClick(service)" class="service-button el-button el-button--primary">
               立即预约
-            </el-button>
+            </button>
           </el-card>
         </el-col>
       </el-row>
