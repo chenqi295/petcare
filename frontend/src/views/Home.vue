@@ -140,6 +140,10 @@ const loadHotServices = async () => {
 
 // 快速预约 - 跳转到服务页面并打开预约对话框
 const handleQuickBooking = (service) => {
+  console.log('点击的服务:', service)
+  console.log('服务ID:', service.id)
+  console.log('分类ID:', service.categoryId)
+  
   if (!userStore.token) {
     ElMessage.warning('请先登录')
     router.push('/login')
@@ -147,6 +151,7 @@ const handleQuickBooking = (service) => {
   }
   
   // 跳转到服务页面，并通过 query 参数传递服务 ID
+  console.log('准备跳转...')
   router.push({
     path: '/services',
     query: {
@@ -154,6 +159,7 @@ const handleQuickBooking = (service) => {
       categoryId: service.categoryId
     }
   })
+  console.log('跳转完成')
 }
 </script>
 
