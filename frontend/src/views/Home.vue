@@ -571,6 +571,7 @@ const goToServices = () => {
   background: white;
   position: relative;
   overflow: hidden;
+  pointer-events: auto !important; /* 确保可点击 */
 }
 
 .service-card::before {
@@ -663,6 +664,9 @@ const goToServices = () => {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   border: none !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  pointer-events: auto !important; /* 确保按钮可点击 */
+  z-index: 10 !important; /* 提高层级 */
+  position: relative !important; /* 确保z-index生效 */
 }
 
 .service-button:hover {
