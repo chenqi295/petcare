@@ -492,6 +492,7 @@ const getGenderText = (gender) => {
   /* 表单项垂直布局 - 强制覆盖 Element Plus 默认样式 */
   :deep(.el-form-item) {
     margin-bottom: 18px;
+    display: block !important;
   }
   
   :deep(.el-form--label-left .el-form-item__label),
@@ -509,8 +510,9 @@ const getGenderText = (gender) => {
   
   :deep(.el-form-item__content) {
     margin-left: 0 !important;
-    width: 100%;
-    display: block;
+    width: 100% !important;
+    display: block !important;
+    clear: both !important;
   }
   
   /* 输入框全宽显示 */
