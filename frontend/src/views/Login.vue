@@ -149,6 +149,18 @@ const handleLogin = async () => {
     console.log('用户信息:', res.data.userInfo) // 调试信息
     console.log('Token过期时间:', new Date(expireTime).toLocaleString()) // 调试信息
     
+    // 检测是否为移动端设备
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768
+    
+    // 移动端只允许用户端登录
+    if (isMobile && (role === 'ADMIN' || role === 'TECHNICIAN')) {
+      ElMessage.warning('管理员和技师请使用电脑端登录')
+      userStore.logout()
+      loading.value = false
+      return
+    }
+    
+    // PC端或用户端正常跳转
     if (role === 'ADMIN') {
       router.push('/admin')
     } else if (role === 'TECHNICIAN') {

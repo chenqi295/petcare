@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useUserStore } from '@/stores/user'
+import { ElMessage } from 'element-plus'
 import Layout from '@/components/Layout.vue'
 import AdminLayout from '@/components/AdminLayout.vue'
 import TechnicianLayout from '@/components/TechnicianLayout.vue'
@@ -174,6 +175,16 @@ router.beforeEach((to, from, next) => {
     console.warn('Token已过期，清除登录状态')
     userStore.logout()
     // 保留记住的密码信息，不清除
+    next('/login')
+    return
+  }
+  
+  // 检测是否为移动端设备
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768
+  
+  // 移动端禁止访问技师端和管理员端
+  if (isMobile && (to.path.startsWith('/technician') || to.path.startsWith('/admin'))) {
+    ElMessage.warning('管理员和技师请使用电脑端登录')
     next('/login')
     return
   }
