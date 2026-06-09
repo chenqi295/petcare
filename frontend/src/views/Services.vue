@@ -571,51 +571,102 @@ const handleBooking = async () => {
   }
   
   /* 服务卡片单列显示 */
+  :deep(.el-col) {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  
   .service-card {
     margin-bottom: 15px;
-    padding: 12px;
+    padding: 15px;
   }
   
   .service-card h3 {
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   
   .desc {
-    font-size: 13px;
+    font-size: 14px;
     min-height: auto;
     margin-bottom: 15px;
+    line-height: 1.6;
   }
   
   .info {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     padding: 12px;
     align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .info span:first-child {
+    font-size: 14px;
   }
   
   .price {
-    font-size: 24px;
+    font-size: 28px;
   }
   
   .service-card :deep(.el-button--primary) {
-    padding: 12px !important;
-    font-size: 15px !important;
+    padding: 14px !important;
+    font-size: 16px !important;
+    height: auto !important;
+    min-height: 48px;
   }
   
   /* 预约对话框优化 */
   :deep(.el-dialog) {
-    width: 90% !important;
-    max-width: 400px;
+    width: 95% !important;
+    max-width: 450px;
+    margin-top: 5vh !important;
+  }
+  
+  :deep(.el-dialog__body) {
+    padding: 20px 15px;
+    max-height: 70vh;
+    overflow-y: auto;
   }
   
   :deep(.el-form-item__label) {
     font-size: 14px;
+    float: none !important;
+    text-align: left !important;
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+  
+  :deep(.el-form-item__content) {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+  
+  :deep(.el-input__inner),
+  :deep(.el-textarea__inner),
+  :deep(.el-select) {
+    width: 100% !important;
   }
   
   :deep(.el-input__inner),
   :deep(.el-textarea__inner) {
     font-size: 14px;
+    padding: 10px 12px;
+  }
+  
+  :deep(.el-date-editor) {
+    width: 100% !important;
+  }
+  
+  :deep(.el-dialog__footer) {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  :deep(.el-dialog__footer .el-button) {
+    flex: 1;
   }
 }
 
@@ -627,6 +678,22 @@ const handleBooking = async () => {
   
   .container {
     padding: 15px 10px;
+  }
+  
+  .service-card {
+    padding: 12px;
+  }
+  
+  .service-card h3 {
+    font-size: 16px;
+  }
+  
+  .desc {
+    font-size: 13px;
+  }
+  
+  .price {
+    font-size: 24px;
   }
 }
 </style>

@@ -377,4 +377,199 @@ const getGenderText = (gender) => {
 .photo-uploader {
   margin-top: 10px;
 }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+  
+  /* 页面头部优化 */
+  .header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+    margin-bottom: 20px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  .header :deep(.el-button) {
+    width: 100%;
+  }
+  
+  /* 宠物卡片单列显示 */
+  :deep(.el-col) {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+  
+  .pet-card {
+    margin-bottom: 20px;
+  }
+  
+  /* 宠物头部垂直布局 */
+  .pet-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .pet-header :deep(.el-avatar) {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+  .pet-info h3 {
+    font-size: 20px;
+    margin: 0 0 8px 0;
+  }
+  
+  .pet-info p {
+    font-size: 14px;
+  }
+  
+  /* 详细信息优化 */
+  .pet-details {
+    margin-bottom: 15px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+  }
+  
+  .detail-item {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .label {
+    color: #64748b;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  
+  /* 操作按钮全宽显示 */
+  .actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .actions :deep(.el-button) {
+    width: 100%;
+  }
+  
+  /* 添加/编辑对话框优化 */
+  :deep(.el-dialog) {
+    width: 95% !important;
+    max-width: 450px;
+    margin-top: 5vh !important;
+  }
+  
+  :deep(.el-dialog__body) {
+    padding: 20px 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+  
+  :deep(.el-form-item__label) {
+    font-size: 14px;
+    float: none !important;
+    text-align: left !important;
+    width: 100% !important;
+    margin-bottom: 8px;
+  }
+  
+  :deep(.el-form-item__content) {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+  
+  :deep(.el-input__inner),
+  :deep(.el-textarea__inner),
+  :deep(.el-select) {
+    width: 100% !important;
+  }
+  
+  :deep(.el-input__inner),
+  :deep(.el-textarea__inner) {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  
+  /* 数字输入框优化 */
+  :deep(.el-input-number) {
+    width: 100% !important;
+  }
+  
+  :deep(.el-input-number .el-input__inner) {
+    text-align: left;
+  }
+  
+  /* 单选组优化 */
+  :deep(.el-radio-group) {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  :deep(.el-radio) {
+    margin-right: 0;
+  }
+  
+  /* 照片上传优化 */
+  .photo-upload {
+    padding: 10px 0;
+  }
+  
+  .photo-upload :deep(.el-avatar) {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  
+  /* 对话框底部按钮优化 */
+  :deep(.el-dialog__footer) {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  :deep(.el-dialog__footer .el-button) {
+    flex: 1;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px 10px;
+  }
+  
+  .page-title {
+    font-size: 20px;
+  }
+  
+  .pet-header :deep(.el-avatar) {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  
+  .pet-info h3 {
+    font-size: 18px;
+  }
+  
+  .pet-info p {
+    font-size: 13px;
+  }
+  
+  .detail-item {
+    font-size: 13px;
+  }
+}
 </style>

@@ -1,1 +1,0 @@
-import{r as e}from"./request-CQ6SF-qE.js";function p(){return e.get("/pet/my-pets")}function r(t){return e.post("/pet/add",t)}function u(t){return e.put("/pet/update",t)}function a(t){return e.delete(`/pet/delete/${t}`)}function n(t){return e.post("/upload/pet-photo",t,{headers:{"Content-Type":"multipart/form-data"}})}export{u as a,r as b,a as d,p as g,n as u};
