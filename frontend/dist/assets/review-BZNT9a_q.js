@@ -1,0 +1,1 @@
+import{r}from"./request-3qf8dLlZ.js";import"./index-BX5CsYtv.js";function n(e){return r.post("/review/create",e)}function c(e){return r.get(`/review/service/${e}`)}function v(e){return r.get(`/review/technician/${e}`)}function o(){return r.get("/review/my-reviews")}export{n as createReview,o as getMyReviews,c as getServiceReviews,v as getTechnicianReviews};

@@ -35,7 +35,7 @@
 
     <!-- 预约对话框 -->
     <el-dialog v-model="dialogVisible" title="预约服务" width="500px">
-      <el-form :model="bookingForm" label-width="100px">
+      <el-form :model="bookingForm">
         <el-form-item label="服务项目">
           <el-input v-model="selectedService.name" disabled />
         </el-form-item>
@@ -619,33 +619,58 @@ const handleBooking = async () => {
   
   /* 预约对话框优化 */
   :deep(.el-dialog) {
-    width: 95% !important;
-    max-width: 450px;
-    margin-top: 5vh !important;
+    width: 92% !important;
+    max-width: 480px;
+    margin-top: 3vh !important;
+    margin-bottom: 3vh !important;
+  }
+  
+  :deep(.el-dialog__header) {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ebeef5;
+  }
+  
+  :deep(.el-dialog__title) {
+    font-size: 18px;
+    font-weight: 600;
   }
   
   :deep(.el-dialog__body) {
-    padding: 20px 15px;
+    padding: 20px;
     max-height: 70vh;
     overflow-y: auto;
   }
   
+  /* 表单项垂直布局 - 强制覆盖 Element Plus 默认样式 */
+  :deep(.el-form-item) {
+    margin-bottom: 18px;
+    display: block !important;
+  }
+  
+  :deep(.el-form--label-left .el-form-item__label),
+  :deep(.el-form--label-right .el-form-item__label),
   :deep(.el-form-item__label) {
-    font-size: 14px;
     float: none !important;
     text-align: left !important;
     width: 100% !important;
+    display: block !important;
+    line-height: 1.5;
     margin-bottom: 8px;
+    padding: 0 !important;
+    font-size: 14px;
   }
   
   :deep(.el-form-item__content) {
     margin-left: 0 !important;
-    width: 100%;
+    width: 100% !important;
+    display: block !important;
+    clear: both !important;
   }
   
-  :deep(.el-input__inner),
-  :deep(.el-textarea__inner),
-  :deep(.el-select) {
+  /* 输入框全宽显示 */
+  :deep(.el-input),
+  :deep(.el-select),
+  :deep(.el-date-editor) {
     width: 100% !important;
   }
   
@@ -653,20 +678,26 @@ const handleBooking = async () => {
   :deep(.el-textarea__inner) {
     font-size: 14px;
     padding: 10px 12px;
+    min-height: 44px;
   }
   
+  /* 日期选择器优化 */
   :deep(.el-date-editor) {
     width: 100% !important;
   }
   
+  /* 底部按钮全宽 */
   :deep(.el-dialog__footer) {
-    padding: 15px;
+    padding: 15px 20px;
+    border-top: 1px solid #ebeef5;
     display: flex;
-    gap: 10px;
+    gap: 12px;
   }
   
   :deep(.el-dialog__footer .el-button) {
     flex: 1;
+    height: 44px;
+    font-size: 15px;
   }
 }
 
