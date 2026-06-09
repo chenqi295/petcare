@@ -49,7 +49,7 @@
               <span class="currency">¥</span>
               <span class="amount">{{ service.price }}</span>
             </div>
-            <el-button type="primary" @click="goToServices" class="service-button">
+            <el-button type="primary" @click="testClick(service)" class="service-button">
               立即预约
             </el-button>
           </el-card>
@@ -136,6 +136,13 @@ const loadHotServices = async () => {
   } finally {
     loading.value = false
   }
+}
+
+// 测试点击事件
+const testClick = (service) => {
+  console.log('=== 按钮被点击了！===')
+  console.log('服务信息:', service)
+  goToServices()
 }
 
 // 跳转到服务页面
