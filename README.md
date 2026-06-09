@@ -40,12 +40,13 @@ PetCare 是一个专业的宠物服务平台，为用户提供宠物美容、医
 - Hutool 5.8.24
 - Lombok
 
-### 前端（待实现）
+### 前端（已完成）
 - Vue 3
 - Vite
 - Element Plus
 - Axios
 - Pinia
+- ECharts
 
 ## 项目结构
 
@@ -87,9 +88,20 @@ PetCare/
 │   │   │       └── JwtUtil.java           # JWT工具
 │   │   └── resources/
 │   │       └── application.yml            # 配置文件
-├── sql/
-│   └── schema.sql                         # 数据库脚本
-└── pom.xml                                # Maven配置
+├├── sql/
+│   └── init_database.sql                # 数据库初始化脚本
+├── frontend/                            # 前端项目
+│   ├── src/                             # 前端源代码
+│   ├── public/                          # 静态资源
+│   ├── index.html                       # HTML模板
+│   ├── package.json                     # 依赖配置
+│   ── vite.config.js                   # Vite配置
+├── nginx.conf                           # Nginx配置文件
+├── deploy.sh                            # 自动化部署脚本
+├── DEPLOYMENT.md                        # 详细部署文档
+├── CHECKLIST_DEPLOY.md                  # 部署清单
+├── FILE_LIST.md                         # 项目文件清单
+└── pom.xml                              # Maven配置
 ```
 
 ## 快速开始
@@ -104,7 +116,7 @@ PetCare/
 
 1. 创建数据库并导入数据：
 ```bash
-mysql -u root -p < sql/schema.sql
+mysql -u root -p < sql/init_database.sql
 ```
 
 2. 修改配置文件 `src/main/resources/application.yml`：
@@ -339,8 +351,9 @@ netstat -tlnp | grep 80
 
 ## 开发计划
 
-- [ ] 前端Vue项目开发
-- [ ] 文件上传功能（宠物照片、服务图片）
+- [x] 前端Vue项目开发
+- [x] 文件上传功能（宠物照片、服务图片）
+- [x] 近七天收入图表展示
 - [ ] 消息通知系统
 - [ ] 数据统计与分析
 - [ ] 技师位置服务
