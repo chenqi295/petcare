@@ -121,14 +121,19 @@ const loading = ref(false)
 const hotServices = ref([])
 
 onMounted(() => {
+  console.log('=== Home 页面已加载 ===')
+  console.log('当前路由:', router.currentRoute.value)
   loadHotServices()
 })
 
 const loadHotServices = async () => {
+  console.log('开始加载热门服务...')
   loading.value = true
   try {
     const res = await getHotServices(6)
+    console.log('热门服务数据:', res.data)
     hotServices.value = res.data || []
+    console.log('热门服务数量:', hotServices.value.length)
   } catch (error) {
     console.error('加载热门服务失败:', error)
     // 静默失败，不影响页面展示
