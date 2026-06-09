@@ -489,24 +489,28 @@ const getGenderText = (gender) => {
     overflow-y: auto;
   }
   
-  /* 表单项垂直布局 */
+  /* 表单项垂直布局 - 强制覆盖 Element Plus 默认样式 */
   :deep(.el-form-item) {
     margin-bottom: 18px;
   }
   
+  :deep(.el-form--label-left .el-form-item__label),
+  :deep(.el-form--label-right .el-form-item__label),
   :deep(.el-form-item__label) {
-    font-size: 14px;
     float: none !important;
     text-align: left !important;
     width: 100% !important;
+    display: block !important;
     line-height: 1.5;
     margin-bottom: 8px;
     padding: 0 !important;
+    font-size: 14px;
   }
   
   :deep(.el-form-item__content) {
     margin-left: 0 !important;
     width: 100%;
+    display: block;
   }
   
   /* 输入框全宽显示 */
