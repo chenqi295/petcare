@@ -690,23 +690,127 @@ const loadHotServices = async () => {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .banner {
-    padding: 80px 20px 60px;
+    padding: 60px 15px 40px;
+    min-height: 400px;
+  }
+  
+  .banner-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
   }
   
   .banner h1 {
-    font-size: 32px;
+    font-size: 28px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
   }
   
   .banner p {
     font-size: 16px;
+    margin-bottom: 30px;
   }
   
-  .section-title {
-    font-size: 28px;
+  .cta-button {
+    padding: 14px 35px !important;
+    font-size: 16px !important;
+  }
+  
+  /* 隐藏部分装饰元素以提升性能 */
+  .floating-shapes,
+  .deco-dots {
+    display: none;
+  }
+  
+  .circle-1 {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .circle-2 {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .circle-3 {
+    display: none;
   }
   
   .container {
-    padding: 50px 20px;
+    padding: 40px 15px;
+  }
+  
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  .title-icon {
+    font-size: 24px;
+  }
+  
+  /* 服务卡片单列显示 */
+  .service-card {
+    margin-bottom: 20px;
+  }
+  
+  .service-icon {
+    font-size: 50px;
+  }
+  
+  .service-card h3 {
+    font-size: 18px;
+  }
+  
+  .desc {
+    font-size: 13px;
+    min-height: auto;
+  }
+  
+  .amount {
+    font-size: 28px;
+  }
+  
+  /* 特色优势区域优化 */
+  .features {
+    padding: 40px 0;
+  }
+  
+  .feature-item {
+    padding: 20px 15px;
+  }
+  
+  .feature-item .icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+  
+  .feature-item h3 {
+    font-size: 18px;
+  }
+  
+  .feature-item p {
+    font-size: 13px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .banner {
+    padding: 50px 10px 30px;
+    min-height: 350px;
+  }
+  
+  .banner h1 {
+    font-size: 24px;
+  }
+  
+  .banner p {
+    font-size: 14px;
+  }
+  
+  .section-title {
+    font-size: 20px;
   }
 }
 </style>

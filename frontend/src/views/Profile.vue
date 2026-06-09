@@ -283,4 +283,68 @@ const handleChangePassword = async () => {
   color: #333;
   margin-bottom: 20px;
 }
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 15px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* 用户信息卡片全屏显示 */
+  .el-col:first-child {
+    margin-bottom: 20px;
+  }
+  
+  .user-info {
+    padding: 10px;
+  }
+  
+  .avatar-container :deep(.el-avatar) {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+  .user-info h3 {
+    font-size: 20px;
+    margin: 12px 0 8px;
+  }
+  
+  .user-info p {
+    font-size: 13px;
+  }
+  
+  /* 表单优化 */
+  .card-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  :deep(.el-form-item__label) {
+    font-size: 14px;
+  }
+  
+  :deep(.el-input__inner) {
+    font-size: 14px;
+  }
+  
+  :deep(.el-button) {
+    width: 100%;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px 10px;
+  }
+  
+  .page-title {
+    font-size: 20px;
+  }
+}
 </style>

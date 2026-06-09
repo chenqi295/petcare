@@ -551,15 +551,82 @@ const handleBooking = async () => {
 /* 响应式设计 */
 @media (max-width: 768px) {
   .page-title {
-    font-size: 28px;
+    font-size: 24px;
+    margin-bottom: 20px;
   }
   
   .container {
-    padding: 30px 15px;
+    padding: 20px 15px;
   }
   
+  /* Tabs 优化 */
+  :deep(.el-tabs__header) {
+    padding: 8px 10px;
+    margin-bottom: 20px !important;
+  }
+  
+  :deep(.el-tabs__item) {
+    font-size: 14px;
+    padding: 0 15px;
+  }
+  
+  /* 服务卡片单列显示 */
   .service-card {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    padding: 12px;
+  }
+  
+  .service-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .desc {
+    font-size: 13px;
+    min-height: auto;
+    margin-bottom: 15px;
+  }
+  
+  .info {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    align-items: flex-start;
+  }
+  
+  .price {
+    font-size: 24px;
+  }
+  
+  .service-card :deep(.el-button--primary) {
+    padding: 12px !important;
+    font-size: 15px !important;
+  }
+  
+  /* 预约对话框优化 */
+  :deep(.el-dialog) {
+    width: 90% !important;
+    max-width: 400px;
+  }
+  
+  :deep(.el-form-item__label) {
+    font-size: 14px;
+  }
+  
+  :deep(.el-input__inner),
+  :deep(.el-textarea__inner) {
+    font-size: 14px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 20px;
+  }
+  
+  .container {
+    padding: 15px 10px;
   }
 }
 </style>

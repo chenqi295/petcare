@@ -317,12 +317,105 @@ onMounted(() => {
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .technician-grid {
-    grid-template-columns: 1fr;
+  .technicians-page {
+    padding: 20px 0;
+  }
+  
+  .container {
+    padding: 0 15px;
   }
   
   .page-title {
     font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* 技师卡片单列显示 */
+  .technician-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .technician-card {
+    margin-bottom: 0;
+  }
+  
+  .card-content {
+    padding: 15px;
+  }
+  
+  .avatar-section {
+    margin-bottom: 15px;
+    padding: 15px 0;
+  }
+  
+  .avatar-section :deep(.el-avatar) {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  
+  .status-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  
+  .technician-name {
+    font-size: 18px;
+  }
+  
+  .username {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+  
+  .rating-section {
+    margin-bottom: 12px;
+  }
+  
+  .stats-row {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .stat-item {
+    font-size: 13px;
+    justify-content: center;
+  }
+  
+  .skills-section {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  
+  .skills-section :deep(.el-tag) {
+    font-size: 12px;
+  }
+  
+  .introduction {
+    font-size: 13px;
+    padding: 8px;
+    min-height: auto;
+  }
+  
+  .review-btn {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .page-title {
+    font-size: 20px;
+  }
+  
+  .card-content {
+    padding: 12px;
   }
 }
 </style>

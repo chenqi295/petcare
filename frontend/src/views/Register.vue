@@ -465,11 +465,90 @@ const trimPhone = () => {
 @media (max-width: 768px) {
   .register-card {
     width: 90%;
-    padding: 30px 20px;
+    max-width: 400px;
+    padding: 30px 25px;
+  }
+  
+  .logo-icon {
+    font-size: 50px;
+    margin-bottom: 12px;
   }
   
   .title {
     font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+  }
+  
+  .card-header {
+    margin-bottom: 25px;
+  }
+  
+  .register-form :deep(.el-form-item) {
+    margin-bottom: 18px;
+  }
+  
+  .register-form :deep(.el-input__wrapper) {
+    padding: 10px 12px;
+  }
+  
+  /* 下拉框选项优化 */
+  .role-option {
+    gap: 10px;
+  }
+  
+  .role-icon {
+    font-size: 20px;
+  }
+  
+  .role-title {
+    font-size: 13px;
+  }
+  
+  .role-desc {
+    font-size: 11px;
+  }
+  
+  .register-button {
+    height: 44px;
+    font-size: 15px;
+  }
+  
+  .links {
+    margin-top: 15px;
+  }
+  
+  .links a {
+    font-size: 13px;
+  }
+  
+  /* 隐藏背景装饰以提升性能 */
+  .shape-1,
+  .shape-3 {
+    display: none;
+  }
+  
+  .shape-2 {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .register-card {
+    width: 95%;
+    padding: 25px 20px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .logo-icon {
+    font-size: 45px;
   }
 }
 </style>

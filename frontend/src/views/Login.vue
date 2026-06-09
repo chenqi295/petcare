@@ -368,11 +368,74 @@ const trimUsername = () => {
 @media (max-width: 768px) {
   .login-card {
     width: 90%;
-    padding: 30px 20px;
+    max-width: 400px;
+    padding: 30px 25px;
+  }
+  
+  .logo-icon {
+    font-size: 50px;
+    margin-bottom: 12px;
   }
   
   .title {
     font-size: 24px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+  }
+  
+  .card-header {
+    margin-bottom: 25px;
+  }
+  
+  .login-form :deep(.el-form-item) {
+    margin-bottom: 18px;
+  }
+  
+  .login-form :deep(.el-input__wrapper) {
+    padding: 10px 12px;
+  }
+  
+  .login-button {
+    height: 44px;
+    font-size: 15px;
+  }
+  
+  .links {
+    margin-top: 15px;
+  }
+  
+  .links a,
+  .links .divider {
+    font-size: 13px;
+  }
+  
+  /* 隐藏背景装饰以提升性能 */
+  .shape-1,
+  .shape-3 {
+    display: none;
+  }
+  
+  .shape-2 {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .login-card {
+    width: 95%;
+    padding: 25px 20px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+  
+  .logo-icon {
+    font-size: 45px;
   }
 }
 </style>
