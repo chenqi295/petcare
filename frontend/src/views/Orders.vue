@@ -155,7 +155,7 @@
     
     <!-- 评价对话框 -->
     <el-dialog v-model="reviewDialogVisible" title="服务评价" width="500px">
-      <el-form :model="reviewForm" label-width="80px">
+      <el-form :model="reviewForm">
         <el-form-item label="评分">
           <el-rate v-model="reviewForm.rating" show-text :texts="['极差', '失望', '一般', '满意', '超赞']" />
         </el-form-item>
@@ -447,6 +447,73 @@ const getOrderStatusType = (status) => {
     flex: 1;
     height: 40px;
     font-size: 14px;
+  }
+  
+  /* 支付对话框优化 */
+  :deep(.el-dialog__body) {
+    padding: 20px;
+  }
+  
+  :deep(.el-select) {
+    width: 100%;
+  }
+  
+  /* 评价对话框优化 - 强制覆盖 Element Plus 默认样式 */
+  :deep(.el-form-item) {
+    margin-bottom: 18px;
+    display: block !important;
+  }
+  
+  :deep(.el-form--label-left .el-form-item__label),
+  :deep(.el-form--label-right .el-form-item__label),
+  :deep(.el-form-item__label) {
+    float: none !important;
+    text-align: left !important;
+    width: 100% !important;
+    display: block !important;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    padding: 0 !important;
+    font-size: 14px;
+  }
+  
+  :deep(.el-form-item__content) {
+    margin-left: 0 !important;
+    width: 100% !important;
+    display: block !important;
+    clear: both !important;
+  }
+  
+  /* 评分组件居中 */
+  :deep(.el-rate) {
+    display: inline-block;
+  }
+  
+  /* 文本框全宽显示 */
+  :deep(.el-input),
+  :deep(.el-textarea) {
+    width: 100% !important;
+  }
+  
+  :deep(.el-input__inner),
+  :deep(.el-textarea__inner) {
+    font-size: 14px;
+    padding: 10px 12px;
+    min-height: 44px;
+  }
+  
+  /* 底部按钮全宽 */
+  :deep(.el-dialog__footer) {
+    padding: 15px 20px;
+    border-top: 1px solid #ebeef5;
+    display: flex;
+    gap: 12px;
+  }
+  
+  :deep(.el-dialog__footer .el-button) {
+    flex: 1;
+    height: 44px;
+    font-size: 15px;
   }
 }
 </style>
