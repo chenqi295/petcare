@@ -49,7 +49,7 @@
               <span class="currency">¥</span>
               <span class="amount">{{ service.price }}</span>
             </div>
-            <el-button type="primary" @click="handleQuickBooking(service)" class="service-button">
+            <el-button type="primary" @click="goToServices" class="service-button">
               立即预约
             </el-button>
           </el-card>
@@ -138,28 +138,16 @@ const loadHotServices = async () => {
   }
 }
 
-// 快速预约 - 跳转到服务页面并打开预约对话框
-const handleQuickBooking = (service) => {
-  console.log('点击的服务:', service)
-  console.log('服务ID:', service.id)
-  console.log('分类ID:', service.categoryId)
-  
+// 跳转到服务页面
+const goToServices = () => {
   if (!userStore.token) {
     ElMessage.warning('请先登录')
     router.push('/login')
     return
   }
   
-  // 跳转到服务页面，并通过 query 参数传递服务 ID
-  console.log('准备跳转...')
-  router.push({
-    path: '/services',
-    query: {
-      serviceId: service.id,
-      categoryId: service.categoryId
-    }
-  })
-  console.log('跳转完成')
+  // 直接跳转到服务页面
+  router.push('/services')
 }
 </script>
 
