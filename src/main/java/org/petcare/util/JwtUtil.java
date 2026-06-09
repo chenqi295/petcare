@@ -44,10 +44,10 @@ public class JwtUtil {
         Date expiryDate = new Date(now.getTime() + expiration);
         
         return Jwts.builder()
-                .claims(claims)
-                .subject(username)
-                .issuedAt(now)
-                .expiration(expiryDate)
+                .setClaims(claims)
+                .setSubject(username)
+                .setIssuedAt(now)
+                .setExpiration(expiryDate)
                 .signWith(getSignKey())
                 .compact();
     }
@@ -56,11 +56,11 @@ public class JwtUtil {
      * 从Token中获取Claims
      */
     public Claims getClaimsFromToken(String token) {
-        return Jwts.parser()
-                .verifyWith(getSignKey())
+        return Jwts.parserBuilder()
+                .setSigningKey(getSignKey())
                 .build()
-                .parseSignedClaims(token)
-                .getPayload();
+                .parseClaimsJws(token)
+                .getBody();
     }
     
     /**
