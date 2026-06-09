@@ -140,14 +140,21 @@ const loadHotServices = async () => {
 
 // 跳转到服务页面
 const goToServices = () => {
+  console.log('=== 点击立即预约按钮 ===')
+  console.log('当前token:', userStore.token)
+  console.log('用户信息:', userStore.userInfo)
+  
   if (!userStore.token) {
+    console.log('未登录，跳转到登录页')
     ElMessage.warning('请先登录')
     router.push('/login')
     return
   }
   
+  console.log('已登录，跳转到服务页面')
   // 直接跳转到服务页面
   router.push('/services')
+  console.log('跳转指令已发送')
 }
 </script>
 
