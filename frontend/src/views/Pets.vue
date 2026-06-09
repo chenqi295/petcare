@@ -467,15 +467,31 @@ const getGenderText = (gender) => {
   
   /* 添加/编辑对话框优化 */
   :deep(.el-dialog) {
-    width: 95% !important;
-    max-width: 450px;
-    margin-top: 5vh !important;
+    width: 92% !important;
+    max-width: 480px;
+    margin-top: 3vh !important;
+    margin-bottom: 3vh !important;
+  }
+  
+  :deep(.el-dialog__header) {
+    padding: 15px 20px;
+    border-bottom: 1px solid #ebeef5;
+  }
+  
+  :deep(.el-dialog__title) {
+    font-size: 18px;
+    font-weight: 600;
   }
   
   :deep(.el-dialog__body) {
-    padding: 20px 15px;
+    padding: 20px;
     max-height: 70vh;
     overflow-y: auto;
+  }
+  
+  /* 表单项垂直布局 */
+  :deep(.el-form-item) {
+    margin-bottom: 18px;
   }
   
   :deep(.el-form-item__label) {
@@ -483,7 +499,9 @@ const getGenderText = (gender) => {
     float: none !important;
     text-align: left !important;
     width: 100% !important;
+    line-height: 1.5;
     margin-bottom: 8px;
+    padding: 0 !important;
   }
   
   :deep(.el-form-item__content) {
@@ -491,16 +509,18 @@ const getGenderText = (gender) => {
     width: 100%;
   }
   
-  :deep(.el-input__inner),
-  :deep(.el-textarea__inner),
-  :deep(.el-select) {
+  /* 输入框全宽显示 */
+  :deep(.el-input),
+  :deep(.el-select),
+  :deep(.el-textarea) {
     width: 100% !important;
   }
   
   :deep(.el-input__inner),
   :deep(.el-textarea__inner) {
-    font-size: 14px;
-    padding: 10px 12px;
+    font-size: 15px;
+    padding: 12px 15px;
+    min-height: 44px;
   }
   
   /* 数字输入框优化 */
@@ -510,38 +530,76 @@ const getGenderText = (gender) => {
   
   :deep(.el-input-number .el-input__inner) {
     text-align: left;
+    font-size: 15px;
+    padding: 12px 15px;
+    min-height: 44px;
   }
   
   /* 单选组优化 */
   :deep(.el-radio-group) {
     display: flex;
-    gap: 15px;
+    gap: 20px;
     width: 100%;
+    padding: 8px 0;
   }
   
   :deep(.el-radio) {
     margin-right: 0;
+    font-size: 15px;
+  }
+  
+  :deep(.el-radio__input) {
+    transform: scale(1.1);
+  }
+  
+  /* 下拉选择器优化 */
+  :deep(.el-select) {
+    width: 100% !important;
+  }
+  
+  :deep(.el-select__wrapper) {
+    min-height: 44px;
   }
   
   /* 照片上传优化 */
   .photo-upload {
-    padding: 10px 0;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
   }
   
   .photo-upload :deep(.el-avatar) {
-    width: 90px !important;
-    height: 90px !important;
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .photo-uploader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .photo-uploader :deep(.el-button) {
+    min-height: 44px;
+    font-size: 15px;
+    padding: 12px 30px;
   }
   
   /* 对话框底部按钮优化 */
   :deep(.el-dialog__footer) {
-    padding: 15px;
+    padding: 15px 20px;
+    border-top: 1px solid #ebeef5;
     display: flex;
-    gap: 10px;
+    gap: 12px;
   }
   
   :deep(.el-dialog__footer .el-button) {
     flex: 1;
+    min-height: 44px;
+    font-size: 15px;
+    font-weight: 500;
   }
 }
 
